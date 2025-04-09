@@ -27,6 +27,12 @@ class Technology(Choice):
     class Meta:
         verbose_name_plural = "technologies"
 
+YES_NO_UNKNOWN = [
+    ("Y", "Yes"),
+    ("N", "No"),
+    ("U", "Don't know"),
+]
+
 class MLModel(models.Model):
     class Meta:
         verbose_name = "ML Model"
@@ -35,20 +41,32 @@ class MLModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    year = models.PositiveIntegerField()
-    website = models.URLField()
-    paper = models.CharField(max_length=500)
-    dataset = models.CharField(max_length=500)
-    output_length = models.CharField(max_length=100)
-    license_type = models.CharField(max_length=100)
-    is_free = models.BooleanField()
-    is_open_source = models.BooleanField()
-    has_real_time_inference = models.BooleanField()
-    are_checkpoints_available = models.BooleanField()
-    can_finetune = models.BooleanField()
-    can_train_from_scratch = models.BooleanField()
-    low_resource = models.BooleanField()
-    interactions = models.CharField(max_length=500)
+    year = models.PositiveIntegerField(blank=True)
+    website = models.URLField(blank=True)
+    paper = models.CharField(max_length=500, blank=True)
+    dataset = models.CharField(max_length=500, blank=True)
+    output_length = models.CharField(max_length=100, blank=True)
+    license_type = models.CharField(max_length=100, blank=True)
+    is_free = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
+    is_open_source = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
+    has_real_time_inference = models.CharField(
+        max_length=1,
+        choices=YES_NO_UNKNOWN,
+        default="U",
+    )
+    are_checkpoints_available = models.CharField(
+        max_length=1,
+        choices=YES_NO_UNKNOWN,
+        default="U",
+    )
+    can_finetune = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
+    can_train_from_scratch = models.CharField(
+        max_length=1,
+        choices=YES_NO_UNKNOWN,
+        default="U",
+    )
+    low_resource = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
+    interactions = models.CharField(max_length=500, blank=True)
 
     technology = models.ManyToManyField(Technology)
     categories = models.ManyToManyField(Category)
