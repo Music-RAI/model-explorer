@@ -1,0 +1,45 @@
+{% extends "genmodels/base.html" %}
+{% block content %}
+  <div class="container">
+    <h1>AI Music Generation - Model Explorer</h1>
+
+    <div class="tags">
+      <span class="tag">audio input</span>
+      <span class="tag">midi input</span>
+      <span class="tag">text prompt</span>
+      <span class="tag">small dataset</span>
+      <span class="tag">audio output</span>
+      <span class="tag-reset" id="tagReset"> X </span>
+    </div>
+
+    <div id="tiles">
+      {% for model in ml_models %}
+        <div class="tile">
+          <h2>{{ model.name }}</h2>
+          <p>{{ model.description }}</p>
+          {% if model.year %}
+            <p>Year: {{ model.year }}</p>
+          {% endif %}
+          {% if model.website %}
+            <p>Website: {{ model.website }}</p>
+          {% endif %}
+          {% if model.paper %}
+            <p>Paper: {{ model.paper }}</p>
+          {% endif %}
+          {% if model.dataset %}
+            <p>Dataset: {{ model.dataset }}</p>
+          {% endif %}
+          {% if model.output_length %}
+            <p>Output length: {{ model.output_length }}</p>
+          {% endif %}
+          {% if model.license_type %}
+            <p>license_type: {{ model.license_type }}</p>
+          {% endif %}
+          <div class="tile-tags">
+              <span class="tag">audio input</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

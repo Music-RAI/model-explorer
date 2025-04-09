@@ -1,5 +1,8 @@
-# from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from .models import MLModel
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the models index.")
+    ml_models = MLModel.objects.all()
+    context = {"ml_models": ml_models}
+    return render(request, "genmodels/index.html", context)
