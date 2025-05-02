@@ -1,20 +1,22 @@
 {% extends "genmodels/base.html" %}
 {% block content %}
   <div class="container">
-    <h1>AI Music Generation - Model Explorer</h1>
+    <h1 class="title rounded-rect">AI Music Generation - Model Explorer</h1>
 
-    <div class="tags">
-      <span class="tag">audio input</span>
-      <span class="tag">midi input</span>
-      <span class="tag">text prompt</span>
-      <span class="tag">small dataset</span>
-      <span class="tag">audio output</span>
-      <span class="tag-reset" id="tagReset"> X </span>
+    <div class="tags-row">
+      <div class="tags">
+        <span class="tag rounded-rect">#audio input</span>
+        <span class="tag rounded-rect">#midi input</span>
+        <span class="tag rounded-rect">#text prompt</span>
+        <span class="tag rounded-rect">#small dataset</span>
+        <span class="tag rounded-rect">#audio output</span>
+      </div>
+      <div class="tag-reset rounded-rect" id="tagReset"> X </div>
     </div>
 
     <div id="tiles">
       {% for model in ml_models %}
-        <div class="tile">
+        <a class="tile rounded-rect">
           <h2>{{ model.name }}</h2>
           <p>{{ model.description }}</p>
           {% if model.year %}
@@ -38,7 +40,7 @@
           <div class="tile-tags">
               <span class="tag">audio input</span>
           </div>
-        </div>
+        </a>
       {% endfor %}
     </div>
   </div>
