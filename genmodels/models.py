@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 
 class Choice(models.Model):
@@ -38,7 +36,7 @@ class MLModel(models.Model):
         verbose_name = "ML Model"
         verbose_name_plural = "ML Models"
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.CharField(max_length=20, unique=True, primary_key=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
     year = models.PositiveIntegerField(blank=True)
