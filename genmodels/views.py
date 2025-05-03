@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import MLModel
@@ -17,4 +16,4 @@ def detail_edit(request, model_id):
     return render(request, "genmodels/detail_edit.html", {"model": model})
 
 def edit(request, model_id):
-    return HttpResponse("Thank you for suggesting changes. One of our team members will review them.")
+    return render(request, "genmodels/detail_edit_response.html")

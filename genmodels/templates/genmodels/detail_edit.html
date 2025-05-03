@@ -5,12 +5,41 @@
 <fieldset>
     <legend><h1>{{ model.name }}</h1></legend>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <!--
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
-    -->
+
+    <div class="property">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" cols="40" rows="10">{{ model.description }}</textarea>
+    </div>
+    {% if model.year %}
+      <div class="property">
+        <label for="year">Year:</label>
+        <input id="year" name="year" type="number" value="{{ model.year }}" min="1900"/>
+      </div>
+    {% endif %}
+    {% if model.website %}
+      <div class="property">
+        <label for="website">Website:</label>
+        <input id="website" name="website" type="url" value="{{ model.website }}" maxlength="200"/>
+      </div>
+    {% endif %}
+    {% if model.dataset %}
+      <div class="property">
+        <label for="dataset">Dataset:</label>
+        <input id="dataset" name="dataset" type="text" value="{{ model.dataset }}" maxlength="500"/>
+      </div>
+    {% endif %}
+    {% if model.output_length %}
+      <div class="property">
+        <label for="output_length">Output length:</label>
+        <input id="output_length" name="output_length" type="text" value="{{ model.output_length }}" maxlength="100"/>
+      </div>
+    {% endif %}
+    {% if model.license_type %}
+      <div class="property">
+        <label for="license_type">License type:</label>
+        <input id="license_type" name="license_type" type="text" value="{{ model.license_type}}" maxlength="100"/>
+      </div>
+    {% endif %}
 </fieldset>
 <input class="button" type="submit" value="Submit changes">
 </form>
