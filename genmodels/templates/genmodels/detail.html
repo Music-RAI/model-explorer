@@ -1,33 +1,35 @@
 {% extends "genmodels/base.html" %}
 {% block content %}
   <div class="container detail">
-    <h1>{{ model.name }}</h1>
-      <!-- TODO: extract to a subview -->
-      <div class="tile">
-        <h2>{{ model.name }}</h2>
-        <p>{{ model.description }}</p>
-        {% if model.year %}
-          <p>Year: {{ model.year }}</p>
-        {% endif %}
-        {% if model.website %}
-          <p>Website: {{ model.website }}</p>
-        {% endif %}
-        {% if model.paper %}
-          <p>Paper: {{ model.paper }}</p>
-        {% endif %}
-        {% if model.dataset %}
-          <p>Dataset: {{ model.dataset }}</p>
-        {% endif %}
-        {% if model.output_length %}
-          <p>Output length: {{ model.output_length }}</p>
-        {% endif %}
-        {% if model.license_type %}
-          <p>license_type: {{ model.license_type }}</p>
-        {% endif %}
-        <div class="tile-tags">
-            <span class="tag">audio input</span>
-        </div>
+    <div class="header">
+      <a class="back" href="/">&larr;</a>
+      <h1>{{ model.name }}</h1>
+    </div>
+    <!-- TODO: extract to a subview -->
+    <div class="detail">
+      <p>{{ model.description }}</p>
+      {% if model.year %}
+        <p>Year: {{ model.year }}</p>
+      {% endif %}
+      {% if model.website %}
+      <p>Website: <a href="{{ model.website }}" target="_blank">{{ model.website }}</a></p>
+      {% endif %}
+      {% if model.paper %}
+        <p>Paper: {{ model.paper }}</p>
+      {% endif %}
+      {% if model.dataset %}
+        <p>Dataset: {{ model.dataset }}</p>
+      {% endif %}
+      {% if model.output_length %}
+        <p>Output length: {{ model.output_length }}</p>
+      {% endif %}
+      {% if model.license_type %}
+        <p>license_type: {{ model.license_type }}</p>
+      {% endif %}
+      <div class="tile-tags">
+          <span class="tag">audio input</span>
       </div>
-      <a href="edit/">Edit</a>
+    </div>
+    <a class="button" href="edit/">Edit</a>
   </div>
 {% endblock content %}

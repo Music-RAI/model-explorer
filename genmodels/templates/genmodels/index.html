@@ -16,7 +16,7 @@
 
     <div id="tiles">
       {% for model in ml_models %}
-        <a class="tile rounded-rect">
+        <a class="tile rounded-rect" href="/{{ model.id }}">
           <h2>{{ model.name }}</h2>
           <p>{{ model.description }}</p>
           {% if model.year %}
