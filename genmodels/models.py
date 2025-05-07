@@ -1,29 +1,61 @@
 from django.db import models
+from moderation import moderation
 
-class Choice(models.Model):
+from .moderators import MLModelModerator
+
+class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
 
-class Tag(Choice): pass
-class InputType(Choice): pass
-class OutputType(Choice): pass
-class TimeToProduceOutput(Choice):
+class InputType(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class OutputType(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class TimeToProduceOutput(models.Model):
     class Meta:
         verbose_name_plural = "times to produce output"
 
-class Category(Choice):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
 
-class Capability(Choice):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Capability(models.Model):
     class Meta:
         verbose_name_plural = "capabilities"
 
-class Technology(Choice):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Technology(models.Model):
     class Meta:
         verbose_name_plural = "technologies"
+
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
 
 YES_NO_UNKNOWN = [
     ("Y", "Yes"),
@@ -36,7 +68,7 @@ class MLModel(models.Model):
         verbose_name = "ML Model"
         verbose_name_plural = "ML Models"
 
-    id = models.CharField(max_length=20, unique=True, primary_key=True)
+    identifier = models.CharField(max_length=20, unique=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
     year = models.PositiveIntegerField(blank=True)
@@ -66,13 +98,15 @@ class MLModel(models.Model):
     low_resource = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
     interactions = models.CharField(max_length=500, blank=True)
 
-    technology = models.ManyToManyField(Technology)
-    categories = models.ManyToManyField(Category)
-    capabilities = models.ManyToManyField(Capability)
-    input_types = models.ManyToManyField(InputType)
-    output_types = models.ManyToManyField(OutputType)
-    time_to_produce_output = models.ManyToManyField(TimeToProduceOutput)
-    tags = models.ManyToManyField(Tag)
+    technology = models.ManyToManyField(Technology, blank=True)
+    categories = models.ManyToManyField(Category, blank=True)
+    capabilities = models.ManyToManyField(Capability, blank=True)
+    input_types = models.ManyToManyField(InputType, blank=True)
+    output_types = models.ManyToManyField(OutputType, blank=True)
+    time_to_produce_output = models.ManyToManyField(TimeToProduceOutput, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.name
+
+moderation.register(MLModel, MLModelModerator)
