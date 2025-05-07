@@ -27,10 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    "django.contrib.sites",
+    "moderation",
     "genmodels.apps.GenmodelsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
