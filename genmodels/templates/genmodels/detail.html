@@ -5,7 +5,6 @@
       <a class="back" href="/">&larr;</a>
       <h1>{{ model.name }}</h1>
     </div>
-    <!-- TODO: extract to a subview -->
     <div class="detail">
       <p>{{ model.description }}</p>
       {% if model.year %}
@@ -14,17 +13,38 @@
       {% if model.website %}
       <p>Website: <a href="{{ model.website }}" target="_blank">{{ model.website }}</a></p>
       {% endif %}
-      {% if model.paper %}
-        <p>Paper: {{ model.paper }}</p>
+      {% if model.input_types %}
+        <p>Input types: {{ model.input_types }}</p>
+      {% endif %}
+      {% if model.output_types %}
+        <p>Input types: {{ model.output_types }}</p>
       {% endif %}
       {% if model.dataset %}
         <p>Dataset: {{ model.dataset }}</p>
       {% endif %}
-      {% if model.output_length %}
-        <p>Output length: {{ model.output_length }}</p>
-      {% endif %}
       {% if model.license_type %}
         <p>license_type: {{ model.license_type }}</p>
+      {% endif %}
+      {% if model.is_free %}
+        <p>Free: {{ model.is_free }}</p>
+      {% endif %}
+      {% if model.is_open_source %}
+        <p>Open source: {{ model.is_open_source }}</p>
+      {% endif %}
+      {% if model.has_real_time_inference %}
+        <p>Real time: {{ model.has_real_time_inference }}</p>
+      {% endif %}
+      {% if model.are_checkpoints_available %}
+        <p>Checkpoints: {{ model.are_checkpoints_available }}</p>
+      {% endif %}
+      {% if model.can_finetune %}
+        <p>Fine-tune: {{ model.can_finetune }}</p>
+      {% endif %}
+      {% if model.can_train_from_scratch %}
+        <p>Train from scratch: {{ model.can_train_from_scratch }}</p>
+      {% endif %}
+      {% if model.technology %}
+        <p>AI Technique: {{ model.technology }}</p>
       {% endif %}
       <div class="tile-tags">
           <span class="tag">audio input</span>
