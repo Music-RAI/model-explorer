@@ -5,6 +5,7 @@ from moderation.moderator import GenericModerator
 
 class MultipleModerationObjectsManager(ModerationObjectsManager):
     def filter_moderated_objects(self, queryset):
+        # Join on the moderation table and group by model id.
         annotated_queryset = queryset.annotate(
             num_moderation_objects=Count('_relation_object')
         )
