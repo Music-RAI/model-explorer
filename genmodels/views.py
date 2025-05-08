@@ -8,6 +8,20 @@ def index(request):
     context = {"ml_models": ml_models}
     return render(request, "genmodels/index.html", context)
 
+def add_model(request):
+    if request.method == "POST":
+        form = MLModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, "genmodels/add_model_response.html")
+    else:
+        form = MLModelForm()
+
+    return render(request, "genmodels/add_model_form.html", {"form": form})
+
+def add_model_success(request):
+    return render(request, "genmodels/add_model_response.html")
+
 def detail(request, model_id):
     model = get_object_or_404(MLModel, pk=model_id)
     return render(request, "genmodels/detail.html", {"model": model})

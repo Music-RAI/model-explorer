@@ -42,6 +42,7 @@ h1, h2 {
 
 .tag,
 .tag-reset,
+.model-add,
 .button {
     padding: 10px;
     margin: 0 5px;
@@ -49,6 +50,7 @@ h1, h2 {
 }
 
 .button,
+.model-add,
 .tag-reset {
     padding-left: 15px;
     padding-right: 15px;
