@@ -60,7 +60,7 @@ class Technology(models.Model):
 YES_NO_UNKNOWN = [
     ("Y", "Yes"),
     ("N", "No"),
-    ("U", "Don't know"),
+    ("U", "Not known"),
 ]
 
 class MLModel(models.Model):

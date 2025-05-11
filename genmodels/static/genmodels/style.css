@@ -96,9 +96,9 @@ h1, h2 {
 }
 
 .tile-tags .tag {
-    padding: 5px;
-    margin-right: 5px;
+    padding: 0px;
     font-size: 0.9em;
+    margin: 0 0 0 5px;
 }
 
 .button {
@@ -120,4 +120,31 @@ h1, h2 {
 
 .detail h1 {
   flex-grow: 1;
+}
+
+.description {
+	overflow: hidden;
+	max-height: 100px;
+	min-height: 100px;
+  word-break: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+}
+
+.yes {
+	color: green;
+}
+
+.no {
+	color: red;
+}
+
+.cols {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cols > p {
+  margin: 0 1em 1em 0;
 }

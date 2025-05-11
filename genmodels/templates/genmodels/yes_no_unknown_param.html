@@ -1,0 +1,11 @@
+{% if param %}
+  {% if param == "Y" %}
+    <i class="yes fa-solid fa-circle-check"></i>
+  {% elif param == "N" %}
+    <i class="no fa-solid fa-circle-xmark"></i>
+  {% elif param == "U" %}
+    <i class="ns fa-solid fa-circle-question"></i>
+  {% endif %}
+{% else %}
+  <i class="ns fa-solid fa-circle-question"></i>
+{% endif %}

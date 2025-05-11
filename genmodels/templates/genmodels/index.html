@@ -5,12 +5,14 @@
 
     <div class="tags-row">
       <div class="tags">
+        <!--
         <span class="tag rounded-rect">#audio input</span>
         <span class="tag rounded-rect">#midi input</span>
         <span class="tag rounded-rect">#text prompt</span>
         <span class="tag rounded-rect">#small dataset</span>
         <span class="tag rounded-rect">#audio output</span>
         <span class="tag-reset rounded-rect" id="tagReset"> X </span>
+        -->
       </div>
       <a class="model-add rounded-rect" id="tagReset" href="/add-model"> + </a>
     </div>
@@ -19,27 +21,86 @@
       {% for model in ml_models %}
         <a class="tile rounded-rect" href="/{{ model.id }}">
           <h2>{{ model.name }}</h2>
-          <p>{{ model.description }}</p>
-          {% if model.year %}
-            <p>Year: {{ model.year }}</p>
-          {% endif %}
-          {% if model.website %}
-            <p>Website: {{ model.website }}</p>
-          {% endif %}
-          {% if model.paper %}
-            <p>Paper: {{ model.paper }}</p>
-          {% endif %}
-          {% if model.dataset %}
-            <p>Dataset: {{ model.dataset }}</p>
-          {% endif %}
-          {% if model.output_length %}
-            <p>Output length: {{ model.output_length }}</p>
-          {% endif %}
-          {% if model.license_type %}
-            <p>license_type: {{ model.license_type }}</p>
-          {% endif %}
+          <p class="description">{{ model.description }}</p>
+          <p>Year:
+            {% if model.year %}
+              {{ model.year }}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>Website:
+            {% if model.website %}
+              {{ model.website }}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>Input types:
+            {% if model.input_types.exists %}
+              {% for input_type in model.input_types.all %}
+                <span class="rel">{{ input_type.name }}</span>
+              {% endfor %}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>Output types:
+            {% if model.output_types.exists %}
+              {% for output_type in model.output_types.all %}
+                <span class="rel">{{ output_type.name }}</span>
+              {% endfor %}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>AI Technique:
+            {% if model.technology.exists %}
+              {% for tech in model.technology.all %}
+                <span class="rel">{{ tech.name }}</span>
+              {% endfor %}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>Dataset:
+            {% if model.dataset %}
+              {{ model.dataset }}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>License type:
+            {% if model.license_type %}
+              {{ model.license_type }}
+            {% else %}
+              <i class="fa-solid fa-circle-question"></i>
+            {% endif %}
+          </p>
+          <p>Real time:
+            {% include "genmodels/yes_no_unknown_param.html" with param=model.has_real_time_inference %}
+          </p>
+          <div class="cols">
+            <p>Free:
+              {% include "genmodels/yes_no_unknown_param.html" with param=model.is_free %}
+            </p>
+            <p>Open source:
+              {% include "genmodels/yes_no_unknown_param.html" with param=model.is_open_source %}
+            </p>
+            <p>Checkpoints:
+              {% include "genmodels/yes_no_unknown_param.html" with param=model.are_checkpoints_available %}
+            </p>
+            <p>Fine-tune:
+              {% include "genmodels/yes_no_unknown_param.html" with param=model.can_finetune %}
+            </p>
+            <p>Train from scratch:
+              {% include "genmodels/yes_no_unknown_param.html" with param=model.can_train_from_scratch %}
+            </p>
+          </div>
           <div class="tile-tags">
-              <span class="tag">audio input</span>
+            {% for tag in model.tags.all %}
+              <span class="tag">{{ tag.name }}</span>
+            {% endfor %}
           </div>
         </a>
       {% endfor %}
