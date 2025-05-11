@@ -1,11 +1,19 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import MLModelForm
-from .models import MLModel
+from .models import MLModel, Tag
 
 def index(request):
-    ml_models = MLModel.objects.all()
-    context = {"ml_models": ml_models}
+    tags = Tag.objects.all()
+    context = {}
+    if tag_name := request.GET.get("tag"):
+        tag = Tag.objects.get(name=tag_name)
+        ml_models = MLModel.objects.filter(tags=tag)
+        context["selected_tag"] = tag_name
+    else:
+        ml_models = MLModel.objects.all()
+        context["selected_tag"] = ""
+    context.update({"ml_models": ml_models, "tags": tags})
     return render(request, "genmodels/index.html", context)
 
 def add_model(request):
