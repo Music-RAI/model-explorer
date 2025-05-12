@@ -68,14 +68,12 @@ class MLModel(models.Model):
         verbose_name = "ML Model"
         verbose_name_plural = "ML Models"
 
-    identifier = models.CharField(max_length=20, unique=True)
+    identifier = models.CharField(max_length=20, unique=True, blank=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    year = models.PositiveIntegerField(blank=True)
+    year = models.PositiveIntegerField(blank=True, null=True)
     website = models.URLField(blank=True)
-    paper = models.CharField(max_length=500, blank=True)
     dataset = models.CharField(max_length=500, blank=True)
-    output_length = models.CharField(max_length=100, blank=True)
     license_type = models.CharField(max_length=100, blank=True)
     is_free = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
     is_open_source = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
@@ -95,18 +93,34 @@ class MLModel(models.Model):
         choices=YES_NO_UNKNOWN,
         default="U",
     )
-    low_resource = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
     interactions = models.CharField(max_length=500, blank=True)
 
     technology = models.ManyToManyField(Technology, blank=True)
-    categories = models.ManyToManyField(Category, blank=True)
-    capabilities = models.ManyToManyField(Capability, blank=True)
     input_types = models.ManyToManyField(InputType, blank=True)
     output_types = models.ManyToManyField(OutputType, blank=True)
-    time_to_produce_output = models.ManyToManyField(TimeToProduceOutput, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.name
+
+    def _name_to_identifier(self):
+        """
+        Convert a name to an identifier by removing whitespace and replacing spaces with hyphens.
+        """
+        name = self.name.lower()
+        identifier = name.replace(' ', '-').strip('-')
+        return identifier
+
+    def save(self, *args, **kwargs):
+        def name_changed():
+            if self.pk is not None:
+                orig = MLModel.objects.get(pk=self.pk)
+                if orig.name == self.name:
+                    return False
+            return True
+
+        if name_changed() or not self.identifier:
+            self.identifier = self._name_to_identifier()
+        super().save(*args, **kwargs)
 
 moderation.register(MLModel, MLModelModerator)
