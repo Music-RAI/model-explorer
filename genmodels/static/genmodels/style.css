@@ -30,7 +30,6 @@ h1, h2 {
 
 .tags-row {
     display: flex;
-    margin-bottom: 1.5em;
     width: 100%;
     flex-direction: column;
 }
@@ -43,7 +42,7 @@ h1, h2 {
     gap: 0.75em 0.5em;
 }
 
-.tag,
+.tags-row .tag,
 .tag-reset,
 .model-add,
 .button {
@@ -69,7 +68,7 @@ h1, h2 {
   padding: 2px;
 }
 
-.tag:hover,
+.tags-row .tag:hover,
 .tag-reset:hover,
 .tag.selected {
   background: #fff;
