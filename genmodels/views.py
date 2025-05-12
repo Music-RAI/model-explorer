@@ -49,7 +49,8 @@ def detail_edit_form(request, model_id):
     else:
         form = MLModelForm(instance=model)
 
-    return render(request, "genmodels/detail_edit_form.html", {"form": form})
+    context = {"form": form, "model": model}
+    return render(request, "genmodels/detail_edit_form.html", context)
 
 def edit_success(request):
     return render(request, "genmodels/detail_edit_response.html")
