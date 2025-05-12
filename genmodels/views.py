@@ -31,7 +31,7 @@ def add_model_success(request):
     return render(request, "genmodels/add_model_response.html")
 
 def detail(request, model_id):
-    model = get_object_or_404(MLModel, pk=model_id)
+    model = get_object_or_404(MLModel, identifier=model_id)
     return render(request, "genmodels/detail.html", {"model": model})
 
 def detail_edit(request, model_id):
@@ -39,7 +39,7 @@ def detail_edit(request, model_id):
     return render(request, "genmodels/detail_edit.html", {"model": model})
 
 def detail_edit_form(request, model_id):
-    model = get_object_or_404(MLModel, pk=model_id)
+    model = get_object_or_404(MLModel, identifier=model_id)
 
     if request.method == "POST":
         form = MLModelForm(request.POST, instance=model)

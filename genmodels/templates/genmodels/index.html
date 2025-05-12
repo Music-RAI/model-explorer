@@ -15,7 +15,7 @@
 
     <div id="tiles">
       {% for model in ml_models %}
-        <a class="tile rounded-rect" href="/{{ model.id }}">
+        <a class="tile rounded-rect" href="/{{ model.identifier }}">
           <h2>{{ model.name }}</h2>
           {% include "genmodels/model_info.html" with model=model %}
         </a>
