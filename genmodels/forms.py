@@ -7,22 +7,20 @@ class MLModelForm(BaseModeratedObjectForm):
     class Meta:
         model = MLModel
         fields = [
-            "identifier",
             "name",
             "description",
             "year",
             "website",
+            "input_types",
+            "output_types",
+            "technology",
             "dataset",
             "license_type",
+            "has_real_time_inference",
             "is_free",
             "is_open_source",
-            "has_real_time_inference",
             "are_checkpoints_available",
             "can_finetune",
             "can_train_from_scratch",
-            "interactions",
-            "technology",
-            "input_types",
-            "output_types",
             "tags",
         ]
