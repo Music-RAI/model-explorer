@@ -1,6 +1,5 @@
 asgiref==3.8.1
 Django==4.2.20
-# Editable install with no version control (django-moderation==0.8.0)
--e /Users/anna/.virtualenvs/model-explorer/lib/python3.9/site-packages
+django-moderation==0.8.0
 sqlparse==0.5.3
 typing_extensions==4.13.1
