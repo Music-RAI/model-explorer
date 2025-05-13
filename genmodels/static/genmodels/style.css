@@ -47,7 +47,6 @@ h1, h2 {
 .model-add,
 .button {
     padding: 10px;
-    margin: 0 5px;
     cursor: pointer;
 }
 
@@ -56,6 +55,10 @@ h1, h2 {
 .tag-reset {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.tag-reset {
+  margin-left: auto;
 }
 
 .button,
@@ -133,13 +136,14 @@ h1, h2 {
   display: flex;
 }
 
+.menu,
 .back {
   align-content: center;
   font-size: 2.5em;
   max-width: fit-content;
 }
 
-.detail h1 {
+.header h1 {
   flex-grow: 1;
 }
 
@@ -168,4 +172,8 @@ h1, h2 {
 
 .cols > p {
   margin: 0 1em 1em 0;
+}
+
+.ns {
+  color: #555;
 }
