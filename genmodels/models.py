@@ -73,15 +73,19 @@ class MLModel(models.Model):
     description = models.TextField()
     year = models.PositiveIntegerField(blank=True, null=True)
     website = models.URLField(blank=True)
+    input_types = models.ManyToManyField(InputType, blank=True)
+    output_types = models.ManyToManyField(OutputType, blank=True)
+    output_length = models.CharField(max_length=100, blank=True)
+    technology = models.ManyToManyField(Technology, blank=True)
     dataset = models.CharField(max_length=500, blank=True)
     license_type = models.CharField(max_length=100, blank=True)
-    is_free = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
-    is_open_source = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
     has_real_time_inference = models.CharField(
         max_length=1,
         choices=YES_NO_UNKNOWN,
         default="U",
     )
+    is_free = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
+    is_open_source = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
     are_checkpoints_available = models.CharField(
         max_length=1,
         choices=YES_NO_UNKNOWN,
@@ -93,11 +97,6 @@ class MLModel(models.Model):
         choices=YES_NO_UNKNOWN,
         default="U",
     )
-    interactions = models.CharField(max_length=500, blank=True)
-
-    technology = models.ManyToManyField(Technology, blank=True)
-    input_types = models.ManyToManyField(InputType, blank=True)
-    output_types = models.ManyToManyField(OutputType, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):

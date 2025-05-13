@@ -31,6 +31,13 @@
     <i class="fa-solid fa-circle-question"></i>
   {% endif %}
 </p>
+<p>Output length:
+  {% if model.output_length %}
+    {{ model.output_length }}
+  {% else %}
+    <i class="fa-solid fa-circle-question"></i>
+  {% endif %}
+</p>
 <p>AI Technique:
   {% if model.technology.exists %}
     {% for tech in model.technology.all %}

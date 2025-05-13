@@ -13,6 +13,7 @@ class MLModelForm(BaseModeratedObjectForm):
             "website",
             "input_types",
             "output_types",
+            "output_length",
             "technology",
             "dataset",
             "license_type",
