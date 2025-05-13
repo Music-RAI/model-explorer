@@ -1,0 +1,179 @@
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #EBEBEB; /* <- silver */
+    color: #000;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.container {
+    max-width: 920px;
+    margin: auto;
+    display: grid;
+    gap: 1.5em;
+}
+
+h1, h2 {
+    text-align: center;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+}
+
+.title {
+  padding: 0.5em 1em;
+}
+
+.tags-row {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    justify-content: space-between;
+    gap: 0.75em 0.5em;
+}
+
+.tags-row .tag,
+.tag-reset,
+.model-add,
+.button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.button,
+.model-add,
+.tag-reset {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tag-reset {
+  margin-left: auto;
+}
+
+.button,
+.model-add {
+  background: #fff;
+}
+
+.model-add {
+  text-align: center;
+  padding: 2px;
+}
+
+.tags-row .tag:hover,
+.tag-reset:hover,
+.tag.selected {
+  background: #fff;
+
+}
+
+/*.button-row {
+  display: flex;
+  justify-content: flex-end;
+}*/
+
+#tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.button,
+.rounded-rect {
+    border-radius: 10px;
+    border: 3px solid #000; /* #d1d1d1; */
+}
+
+.tile {
+    padding: 15px;
+    min-width: 200px;
+    max-width: 400px;
+    flex: 1 1 auto; /* Allow tiles to grow and shrink */
+    box-shadow: 0px 4px 0px 0px #000;
+    cursor: pointer;
+}
+
+.tile:hover {
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.tile h2 {
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.tile-tags {
+    margin-top: 10px;
+}
+
+.tile-tags .tag {
+    padding: 0px;
+    font-size: 0.9em;
+    margin: 0 0 0 5px;
+}
+
+.button {
+  display: flex;
+  max-width: fit-content;
+  margin: 0;
+  background-color: #FFF;
+}
+
+.header {
+  display: flex;
+}
+
+.menu,
+.back {
+  align-content: center;
+  font-size: 2.5em;
+  max-width: fit-content;
+}
+
+.header h1 {
+  flex-grow: 1;
+}
+
+.description {
+	overflow: hidden;
+	max-height: 100px;
+	min-height: 100px;
+  word-break: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+}
+
+.yes {
+	color: green;
+}
+
+.no {
+	color: red;
+}
+
+.cols {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cols > p {
+  margin: 0 1em 1em 0;
+}
+
+.ns {
+  color: #555;
+}
