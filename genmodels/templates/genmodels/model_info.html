@@ -8,7 +8,11 @@
 </p>
 <p>Website:
   {% if model.website %}
-    {{ model.website }}
+    {% if inside_link == "true" %}
+      {{ model.website }}
+    {% else %}
+      <a href="{{ model.website }}" target="_blank">{{ model.website }}</a>
+    {% endif %}
   {% else %}
     <i class="fa-solid fa-circle-question"></i>
   {% endif %}
