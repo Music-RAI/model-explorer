@@ -28,6 +28,14 @@ h1, h2 {
   padding: 0.5em 1em;
 }
 
+.info_page .title {
+  padding: 0.5em 2em;
+}
+
+.info_page p {
+  margin: auto;
+}
+
 .tags-row {
     display: flex;
     width: 100%;
@@ -136,6 +144,7 @@ h1, h2 {
   display: flex;
 }
 
+.home,
 .menu,
 .back {
   align-content: center;
@@ -145,6 +154,14 @@ h1, h2 {
 
 .header h1 {
   flex-grow: 1;
+}
+
+.info_page {
+  justify-content: center;
+}
+
+.info_page .header h1 {
+  flex-grow: 0;
 }
 
 .description {
@@ -176,4 +193,63 @@ h1, h2 {
 
 .ns {
   color: #555;
+}
+
+/* .rel {
+  background: white;
+  padding: 5px 5px;
+  font-size: 0.97em;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  font-family: Monospace;
+}
+*/
+.rel:not(:last-child):after {
+  content: ", ";
+}
+
+.detail p > a {
+  text-decoration: underline;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #000; /* #d1d1d1; */
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+form > p {
+  display: flex;
+  margin: 0.75em 0;
+}
+
+form label {
+  text-align: right;
+  margin-right: 20px;
+  flex: 0.75;
+}
+
+form input,
+form select,
+form textarea {
+  flex: 2;
+  padding: 5px;
+  background: #fff;
+}
+
+.form-bottom {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+img.captcha {
+  margin-right: 20px;
 }
