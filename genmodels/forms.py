@@ -1,9 +1,12 @@
+from captcha.fields import CaptchaField
 from django.forms import ModelForm
 from moderation.forms import BaseModeratedObjectForm
+
 from .models import MLModel
 
 class MLModelForm(BaseModeratedObjectForm):
-# class MLModelForm(ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = MLModel
         fields = [

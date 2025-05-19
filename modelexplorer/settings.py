@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "moderation",
     "genmodels.apps.GenmodelsConfig",
+    "captcha",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
