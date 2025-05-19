@@ -1,3 +1,4 @@
+from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import MLModelForm
@@ -5,15 +6,14 @@ from .models import MLModel, Tag
 
 def index(request):
     tags = Tag.objects.all()
+    ml_models = MLModel.objects.all()
+
     context = {}
-    if tag_name := request.GET.get("tag"):
-        tag = Tag.objects.get(name=tag_name)
-        ml_models = MLModel.objects.filter(tags=tag)
-        context["selected_tag"] = tag_name
-    else:
-        ml_models = MLModel.objects.all()
-        context["selected_tag"] = ""
-    context.update({"ml_models": ml_models, "tags": tags})
+    if tag_names := request.GET.getlist("tag"):
+        for tag_name in tag_names:
+            ml_models = ml_models.filter(tags__name=tag_name)
+
+    context.update({"ml_models": ml_models, "tags": tags, "selected_tags": tag_names})
     return render(request, "genmodels/index.html", context)
 
 def add_model(request):

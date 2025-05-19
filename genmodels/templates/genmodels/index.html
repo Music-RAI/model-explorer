@@ -6,10 +6,21 @@
       <h1 class="title">AI Music Generation - Model Explorer</h1>
     </div>
 
+    {% load querystring %}
     <div class="tags-row">
       <div class="tags">
         {% for tag in tags %}
-        <a class="tag rounded-rect {% if tag.name == selected_tag %}selected{% endif %}" href="/?tag={{ tag.name }}">#{{ tag.name }}</a>
+          {% if tag.name in selected_tags %}
+            <a class="tag rounded-rect selected"
+               href="{% url 'index' %}?{{ request.GET.urlencode|remove_tag_param:tag.name }}">
+                 #{{ tag.name }}
+            </a>
+          {% else %}
+            <a class="tag rounded-rect"
+               href="{% url 'index' %}?{{ request.GET.urlencode|append_tag_param:tag.name }}">
+                 #{{ tag.name }}
+            </a>
+          {% endif %}
         {% endfor %}
         <a class="tag-reset rounded-rect" id="tagReset" href="/"> X </a>
       </div>
