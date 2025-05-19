@@ -1,14 +1,16 @@
 {% extends "genmodels/base.html" %}
 {% block content %}
-  <div class="container detail">
+  <div class="container">
     <div class="header">
       <a class="back" href="/">&larr;</a>
       <h1>Edit {{ model.name }}</h1>
     </div>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Suggest changes</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-bottom">
+        <button type="submit" class="button">Suggest changes</button>
+      </div>
     </form>
   </div>
 {% endblock content %}
