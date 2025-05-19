@@ -1,11 +1,11 @@
 {% if param %}
   {% if param == "Y" %}
-    <i class="yes fa-solid fa-circle-check"></i>
+    <i class="yes fa-solid fa-circle-check" title="Yes"></i>
   {% elif param == "N" %}
-    <i class="no fa-solid fa-circle-xmark"></i>
+    <i class="no fa-solid fa-circle-xmark" title="No"></i>
   {% elif param == "U" %}
-    <i class="ns fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not known"></i>
   {% endif %}
 {% else %}
-  <i class="ns fa-solid fa-circle-question"></i>
+  <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
 {% endif %}

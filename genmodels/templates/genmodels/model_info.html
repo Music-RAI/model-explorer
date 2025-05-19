@@ -3,7 +3,7 @@
   {% if model.year %}
     {{ model.year }}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>Website:
@@ -14,7 +14,7 @@
       <a href="{{ model.website }}" target="_blank">{{ model.website }}</a>
     {% endif %}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>Input types:
@@ -23,7 +23,7 @@
       <span class="rel">{{ input_type.name }}</span>
     {% endfor %}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>Output types:
@@ -32,14 +32,14 @@
       <span class="rel">{{ output_type.name }}</span>
     {% endfor %}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>Output length:
   {% if model.output_length %}
     {{ model.output_length }}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>AI Technique:
@@ -48,21 +48,21 @@
       <span class="rel">{{ tech.name }}</span>
     {% endfor %}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>Dataset:
   {% if model.dataset %}
     {{ model.dataset }}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>License type:
   {% if model.license_type %}
     {{ model.license_type }}
   {% else %}
-    <i class="fa-solid fa-circle-question"></i>
+    <i class="ns fa-solid fa-circle-question" title="Not specified"></i>
   {% endif %}
 </p>
 <p>Real time:
