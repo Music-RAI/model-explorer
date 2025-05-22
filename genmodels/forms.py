@@ -1,5 +1,5 @@
 from captcha.fields import CaptchaField
-from django.forms import ModelForm
+from django import forms
 from moderation.forms import BaseModeratedObjectForm
 
 from .models import MLModel
@@ -28,3 +28,9 @@ class MLModelForm(BaseModeratedObjectForm):
             "can_train_from_scratch",
             "tags",
         ]
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True, label='Your Name')
+    email = forms.EmailField(required=True, label='Your Email')
+    title = forms.CharField(max_length=200, required=True, label='Message title')
+    message = forms.CharField(widget=forms.Textarea, required=True, label='Message')

@@ -291,3 +291,11 @@ img.captcha {
   background: white;
   border-radius: 5px;
 }
+
+.errorlist {
+  color: red;
+}
+
+.page p {
+	text-align: justify;
+}

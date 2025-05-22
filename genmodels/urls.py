@@ -4,6 +4,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("about/", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
     path("add-model/", views.add_model, name="add_model"),
     path("add-model/submit", views.add_model_success, name="add_model_success"),
     path("<slug:model_id>/", views.detail, name="detail"),

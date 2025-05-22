@@ -1,7 +1,7 @@
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import MLModelForm
+from .forms import ContactForm, MLModelForm
 from .models import MLModel, Tag
 
 def index(request):
@@ -54,3 +54,18 @@ def detail_edit_form(request, model_id):
 
 def edit_success(request):
     return render(request, "genmodels/detail_edit_response.html")
+
+def about(request):
+    return render(request, "genmodels/about.html")
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # TODO: Process the data in form.cleaned_data
+            # Send an email
+            return render(request, "genmodels/contact_success.html")
+    else:
+        form = ContactForm()
+
+    return render(request, "genmodels/contact.html", {"form": form})
