@@ -63,6 +63,13 @@ YES_NO_UNKNOWN = [
     ("U", "Not known"),
 ]
 
+FREE_YES_NO = [
+    ("Y", "Yes"),
+    ("N", "No"),
+    ("B", "Yes and No, depending on the plan"),
+    ("U", "Not known"),
+]
+
 class MLModel(models.Model):
     class Meta:
         verbose_name = "ML Model"
@@ -84,7 +91,7 @@ class MLModel(models.Model):
         choices=YES_NO_UNKNOWN,
         default="U",
     )
-    is_free = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
+    is_free = models.CharField(max_length=1, choices=FREE_YES_NO, default="U")
     is_open_source = models.CharField(max_length=1, choices=YES_NO_UNKNOWN, default="U")
     are_checkpoints_available = models.CharField(
         max_length=1,
