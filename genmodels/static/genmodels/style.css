@@ -173,7 +173,7 @@ h1, h2 {
   flex-grow: 0;
 }
 
-.description {
+.tile .description {
 	overflow: hidden;
 	max-height: 100px;
 	min-height: 100px;

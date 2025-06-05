@@ -145,15 +145,24 @@ h1, h2 {
 }
 
 .home,
-.menu,
+.menu i,
 .back {
-  align-content: center;
   font-size: 2.5em;
   max-width: fit-content;
 }
 
+.home,
+.menu,
+.back {
+  align-content: center;
+}
+
 .header h1 {
   flex-grow: 1;
+}
+
+.menu i {
+  cursor: pointer;
 }
 
 .info_page {
@@ -164,7 +173,7 @@ h1, h2 {
   flex-grow: 0;
 }
 
-.description {
+.tile .description {
 	overflow: hidden;
 	max-height: 100px;
 	min-height: 100px;
@@ -252,4 +261,41 @@ form textarea {
 
 img.captcha {
   margin-right: 20px;
+}
+
+.menu-rect {
+  padding: 15px;
+  min-width: 250px;
+  position: absolute;
+  background-color: #EBEBEB;
+  margin-top: 1em;
+  box-shadow: 0px 4px 0px 0px #000;
+  display: none;
+}
+
+.menu:hover .menu-rect,
+.menu-rect:hover {
+    display: block;
+}
+
+.menu-rect a {
+  display: block;
+  padding: 5px;
+}
+
+.menu-rect a:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.menu-rect a:hover {
+  background: white;
+  border-radius: 5px;
+}
+
+.errorlist {
+  color: red;
+}
+
+.page p {
+	text-align: justify;
 }
