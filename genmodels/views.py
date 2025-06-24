@@ -1,8 +1,10 @@
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
 from .forms import ContactForm, MLModelForm
 from .models import MLModel, Tag
+from .views_util import email_contacts
 
 def index(request):
     tags = Tag.objects.all()
@@ -21,6 +23,16 @@ def add_model(request):
         form = MLModelForm(request.POST)
         if form.is_valid():
             form.save()
+
+            name = form.cleaned_data['name']
+            admin_url = request.build_absolute_uri(reverse('admin:index'))
+
+            email_contacts(
+                "Request to add model",
+                f"A new model was added: {name}\n\n" + \
+                f"Go to the admin panel and review moderated objects: {admin_url}",
+                tag="Add model",
+            )
             return render(request, "genmodels/add_model_response.html")
     else:
         form = MLModelForm()
@@ -45,6 +57,16 @@ def detail_edit_form(request, model_id):
         form = MLModelForm(request.POST, instance=model)
         if form.is_valid():
             form.save()
+
+            name = form.cleaned_data['name']
+            admin_url = request.build_absolute_uri(reverse('admin:index'))
+
+            email_contacts(
+                "Request to edit model",
+                f"{name} model was edited.\n\n" + \
+                f"Go to the admin panel and review moderated objects: {admin_url}",
+                tag="Edit model",
+            )
             return render(request, "genmodels/detail_edit_response.html")
     else:
         form = MLModelForm(instance=model)
@@ -62,8 +84,18 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # TODO: Process the data in form.cleaned_data
-            # Send an email
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            title = form.cleaned_data['title']
+            message = form.cleaned_data['message']
+
+            email_contacts(
+                title,
+                f"From: {name} <{email}>\n\n{message}",
+                email,
+                "Contact form",
+            )
+
             return render(request, "genmodels/contact_success.html")
     else:
         form = ContactForm()

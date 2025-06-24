@@ -34,3 +34,4 @@ class ContactForm(forms.Form):
     email = forms.EmailField(required=True, label='Your Email')
     title = forms.CharField(max_length=200, required=True, label='Message title')
     message = forms.CharField(widget=forms.Textarea, required=True, label='Message')
+    captcha = CaptchaField()
