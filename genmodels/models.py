@@ -75,7 +75,7 @@ class MLModel(models.Model):
         verbose_name = "ML Model"
         verbose_name_plural = "ML Models"
 
-    identifier = models.CharField(max_length=20, unique=True, blank=True)
+    identifier = models.CharField(max_length=100, unique=True, blank=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
     year = models.PositiveIntegerField(blank=True, null=True)
