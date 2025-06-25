@@ -1,6 +1,5 @@
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
 
 from .forms import ContactForm, MLModelForm
 from .models import MLModel, Tag
@@ -25,12 +24,10 @@ def add_model(request):
             form.save()
 
             name = form.cleaned_data['name']
-            admin_url = request.build_absolute_uri(reverse('admin:index'))
-
             email_contacts(
                 "Request to add model",
                 f"A new model was added: {name}\n\n" + \
-                f"Go to the admin panel and review moderated objects: {admin_url}",
+                f"Go to the admin panel and review moderated objects.",
                 tag="Add model",
             )
             return render(request, "genmodels/add_model_response.html")
@@ -59,12 +56,10 @@ def detail_edit_form(request, model_id):
             form.save()
 
             name = form.cleaned_data['name']
-            admin_url = request.build_absolute_uri(reverse('admin:index'))
-
             email_contacts(
                 "Request to edit model",
                 f"{name} model was edited.\n\n" + \
-                f"Go to the admin panel and review moderated objects: {admin_url}",
+                f"Go to the admin panel and review moderated objects.",
                 tag="Edit model",
             )
             return render(request, "genmodels/detail_edit_response.html")
