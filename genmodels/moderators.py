@@ -18,4 +18,5 @@ class MultipleModerationObjectsManager(ModerationObjectsManager):
 
 class MLModelModerator(GenericModerator):
     keep_history = True
+    notify_user = False
     moderation_manager_class = MultipleModerationObjectsManager
