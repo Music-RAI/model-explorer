@@ -1,3 +1,4 @@
+import markdown
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -40,7 +41,10 @@ def add_model_success(request):
     return render(request, "genmodels/add_model_response.html")
 
 def detail(request, model_id):
+    md = markdown.Markdown(extensions=["fenced_code"])
+
     model = get_object_or_404(MLModel, identifier=model_id)
+    model.guide = md.convert(model.guide)
     return render(request, "genmodels/detail.html", {"model": model})
 
 def detail_edit(request, model_id):

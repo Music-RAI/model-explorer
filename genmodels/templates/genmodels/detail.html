@@ -8,6 +8,12 @@
     <div class="detail">
       {% include "genmodels/model_info.html" with model=model %}
     </div>
+    {% if model.guide %}
+      <div class="guide">
+        <h2>Guide to using the model</h2>
+        {{ model.guide|safe }}
+      </div>
+    {% endif %}
     <a class="button" href="edit/">Edit</a>
   </div>
 {% endblock content %}

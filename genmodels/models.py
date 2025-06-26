@@ -106,6 +106,8 @@ class MLModel(models.Model):
     )
     tags = models.ManyToManyField(Tag, blank=True)
 
+    guide = models.TextField(blank=True, help_text="This field renders Markdown")
+
     def __str__(self):
         return self.name
 

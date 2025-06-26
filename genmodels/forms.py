@@ -27,6 +27,7 @@ class MLModelForm(BaseModeratedObjectForm):
             "can_finetune",
             "can_train_from_scratch",
             "tags",
+            "guide",
         ]
 
 class ContactForm(forms.Form):

@@ -253,6 +253,13 @@ form textarea {
   background: #fff;
 }
 
+form .helptext {
+  position: absolute;
+  margin-top: 1.25em;
+  font-style: italic;
+  color: #4a4a4a;
+}
+
 .form-bottom {
   display: flex;
   justify-content: center;
